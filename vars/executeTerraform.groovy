@@ -11,7 +11,7 @@ def call(Map config = [:], String comandoTerraform) {
     if(comandoTerraform.equals('version')){
         sh "terraform --version"
     } else if(comandoTerraform.equals('init')){
-        withCredentials([file(credentialsId: 'rsa_git_devops', variable: 'FILE')]) {
+        withCredentials([file(credentialsId: 'rsa-azdevops-git', variable: 'FILE')]) {
             sh """
                 cat $FILE
                 cd $dirExecucao && ls -lha && echo terraform $comandoTerraform
