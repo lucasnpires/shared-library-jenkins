@@ -8,8 +8,8 @@ def call(String command) {
                 kind: Pod
                 spec:
                 containers:
-                - name: alpine
-                  image: alpine
+                - name: terraform
+                  image: hashicorp/terraform:latest
                   command:
                    - cat
                   tty: true
@@ -19,8 +19,8 @@ def call(String command) {
         stages {
             stage('Terraform Init') {
                 steps {
-                    container('alpine') {          
-                        echo "echo terraform init"
+                    container('terraform') {          
+                        sh "init"
                     }
                 }
             }
