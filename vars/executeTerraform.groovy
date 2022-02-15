@@ -1,13 +1,15 @@
 def call(Map config = [:], String comandoTerraform) {
+    def dirExecucao = "terraform/${config.cloud}/${config.resourceType}/${config.projectName}"
+
     sh "echo Cloud: ${config.cloud}"
     sh "echo resourceType: ${config.resourceType}"
     sh "echo projectName: ${config.projectName}"
-    sh "echo dirExecucao: terraform/${config.cloud}/${config.resourceType}/${config.projectName}"
+    sh "echo dirExecucao: ${dirExecucao}"
 
     if(comandoTerraform.equals('version')){
         sh "terraform --version"
     } else if(comandoTerraform.equals('init')){
-        sh "ls -lha"
+        sh "cd ${dirExecucao} && ls -lha"
         sh "echo terraform init"
     } else if(comandoTerraform.equals('fmt')){
         sh "echo terraform fmt"
