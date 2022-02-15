@@ -25,7 +25,7 @@ def call(String command) {
             stage('Terraform Init') {
                 steps {
                     container('terraform') {          
-                        sh 'terraform --version'
+                        sh 'init'
                     }
                 }
             }
