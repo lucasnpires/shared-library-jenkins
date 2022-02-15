@@ -7,6 +7,7 @@ def call(Map config = [:], String comandoTerraform) {
     if(comandoTerraform.equals('version')){
         sh "terraform --version"
     } else if(comandoTerraform.equals('init')){
+        sh "ls -lha"
         sh "echo terraform init"
     } else if(comandoTerraform.equals('fmt')){
         sh "echo terraform fmt"
