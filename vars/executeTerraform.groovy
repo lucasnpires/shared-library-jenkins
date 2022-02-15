@@ -1,4 +1,4 @@
-def call(String command, Map config = [:]) {
+def call(String command) {
     sh "terraform --version"
     
     //if (command.equals('version')) {
