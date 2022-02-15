@@ -1,6 +1,8 @@
 def call(Map config = [:], String comandoTerraform) {
     sh "echo Cloud: ${config.cloud}"
-    sh "echo Command: ${comandoTerraform}"
+    sh "echo resourceType: ${config.resourceType}"
+    sh "echo projectName: ${config.projectName}"
+    sh "echo dirExecucao: terraform/${config.cloud}/${config.resourceType}/${config.projectName}"
 
     if(comandoTerraform.equals('version')){
         sh "terraform --version"
@@ -17,6 +19,6 @@ def call(Map config = [:], String comandoTerraform) {
     } else if(comandoTerraform.equals('destroy')){
         sh "echo terraform destroy"
     } else {
-        sh "command not permited. Use init, fmt, validate, plan, apply or destroy"
+        sh "echo command not permited. Use init, fmt, validate, plan, apply or destroy"
     }
 }
