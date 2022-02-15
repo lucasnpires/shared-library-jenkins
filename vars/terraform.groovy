@@ -11,7 +11,7 @@ def call(String command) {
                 - name: terraform
                   image: hashicorp/terraform
                   command:
-                   - cat
+                   - /bin/sh -c cat
                   tty: true
                 '''
             }
@@ -20,7 +20,7 @@ def call(String command) {
             stage('TF Apply') {
                 steps {
                     container('terraform') {
-                        sh 'terraform apply -input=false myplan'
+                        sh 'terraform init'
                     }
                 }
             }                
