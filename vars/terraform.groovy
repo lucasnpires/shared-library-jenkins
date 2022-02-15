@@ -9,7 +9,7 @@ def call(String command) {
                 spec:
                 containers:
                 - name: terraform
-                  image: hashicorp/terraform
+                  image: alpine
                   command:
                    - /bin/sh -c cat
                   tty: true
@@ -20,7 +20,7 @@ def call(String command) {
             stage('TF Apply') {
                 steps {
                     container('terraform') {
-                        sh 'terraform init'
+                        sh 'hostname'
                     }
                 }
             }                
