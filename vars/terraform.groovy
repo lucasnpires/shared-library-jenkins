@@ -8,7 +8,7 @@ def call(String command) {
                 kind: Pod
                 spec:
                 containers:
-                - name: terraform
+                - name: maven
                   image: maven:alpine
                   command:
                    - cat
