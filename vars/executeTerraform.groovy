@@ -20,4 +20,3 @@ def call(Map config = [:], String comandoTerraform) {
         sh "command not permited. Use init, fmt, validate, plan, apply or destroy"
     }
 }
-}
