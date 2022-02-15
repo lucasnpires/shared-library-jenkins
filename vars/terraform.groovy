@@ -9,7 +9,7 @@ def call(String command) {
                 spec:
                 containers:
                 - name: terraform
-                  image: hashicorp/terraform:latest
+                  image: maven:alpine
                   command:
                    - cat
                   tty: true
@@ -22,10 +22,10 @@ def call(String command) {
                     sh 'env | sort'
                 }
             }
-            stage('Terraform Init') {
+            stage('Run maven') {
                 steps {
-                    container('terraform') {          
-                        sh 'init'
+                    container('maven') {
+                        sh 'mvn -version'
                     }
                 }
             }
