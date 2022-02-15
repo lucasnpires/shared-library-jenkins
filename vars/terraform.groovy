@@ -17,10 +17,15 @@ def call(String command) {
             }
         }
         stages {
+            stage("echo parameters") {
+                steps {
+                    sh 'env | sort'
+                }
+            }
             stage('Terraform Init') {
                 steps {
                     container('terraform') {          
-                        sh "init"
+                        sh 'terraform --version'
                     }
                 }
             }
