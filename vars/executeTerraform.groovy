@@ -14,7 +14,7 @@ def call(Map config = [:], String comandoTerraform) {
         withCredentials([file(credentialsId: 'rsa-azdevops-git', variable: 'FILE')]) {
             sh """
                 mkdir -p ~/.ssh
-                cp "$FILE" > ~/.ssh/id_rsa
+                cp -ru "$FILE" ~/.ssh/id_rsa
                 cd $dirExecucao && ls -lha && terraform $comandoTerraform
             """                        
         }
