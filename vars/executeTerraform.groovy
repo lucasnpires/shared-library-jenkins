@@ -1,7 +1,10 @@
-def call(Map config = [:]) {
+def call(Map config = [:], String comandoTerraform) {
     sh "echo Cloud: ${config.cloud}"
-    sh "echo Command: ${config.command}"
-    if(config.command.equals('version')){
+    sh "echo Command: ${config.comandoTerraform}"
+    
+    if(comandoTerraform.equals('version')){
         sh "terraform --version"
+    } else if(comandoTerraform.equals('init')){
+        sh "echo terraform init"
     }
 }
