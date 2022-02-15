@@ -13,8 +13,9 @@ def call(Map config = [:], String comandoTerraform) {
     } else if(comandoTerraform.equals('init')){
         withCredentials([file(credentialsId: 'rsa-azdevops-git', variable: 'FILE')]) {
             sh """
-                cat $FILE
-                cd $dirExecucao && ls -lha && echo terraform $comandoTerraform
+                mkdir -p ~/.ssh
+                cp "$FILE" > ~/.ssh/id_rsa
+                cd $dirExecucao && ls -lha && terraform $comandoTerraform
             """                        
         }
     } else if(comandoTerraform.equals('fmt') || comandoTerraform.equals('validate') || comandoTerraform.equals('plan') || comandoTerraform.equals('apply') || comandoTerraform.equals('destroy')){
