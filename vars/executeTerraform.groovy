@@ -19,6 +19,7 @@ def call(Map config = [:], String comandoTerraform) {
             //echo '' > ~/.ssh/authorized_keys
             
             sh """
+                export  GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa"
                 cd $dirExecucao && ls -lha && terraform $comandoTerraform
             """                        
         //}
