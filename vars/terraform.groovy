@@ -9,10 +9,10 @@ def call(String command) {
                 spec:
                 containers:
                 - name: alpine
-                    image: alpine
-                    command:
-                    - cat
-                    tty: true
+                  image: alpine
+                  command:
+                   - cat
+                  tty: true
                 '''
             }
         }
