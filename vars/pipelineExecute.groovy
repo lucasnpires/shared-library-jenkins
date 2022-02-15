@@ -1,5 +1,5 @@
-def call(String pipeline, Map config = [:]){
-    if(pipeline.equals('terraform')){
+def call(String pipelineType, Map config = [:]){
+    if(pipelineType.equals('terraform')){
         pipeline {
             agent {
                 kubernetes {
