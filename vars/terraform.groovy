@@ -17,7 +17,7 @@ def call(String command) {
             }
         }
         stages {
-            stage("echo parameters") {
+            stage("Imprimir Parâmetros") {
                 steps {
                     sh 'env | sort'
                 }
