@@ -13,15 +13,15 @@ def call(Map config = [:], String comandoTerraform) {
     } 
     
     else if(comandoTerraform.equals('init')){
-        withCredentials([file(credentialsId: 'rsa-azdevops-git', variable: 'FILE')]) {
+        //withCredentials([file(credentialsId: 'rsa-azdevops-git', variable: 'FILE')]) {
+            //mkdir -p ~/.ssh
+            //cp -ru "$FILE" ~/.ssh/id_rsa
+            //echo '' > ~/.ssh/authorized_keys
+            
             sh """
-                GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-                mkdir -p ~/.ssh
-                cp -ru "$FILE" ~/.ssh/id_rsa
-                cat ~/.ssh/id_rsa
                 cd $dirExecucao && ls -lha && terraform $comandoTerraform
             """                        
-        }
+        //}
     } 
     
     else if(comandoTerraform.equals('fmt') || comandoTerraform.equals('validate') || comandoTerraform.equals('plan') || comandoTerraform.equals('apply') || comandoTerraform.equals('destroy')){
