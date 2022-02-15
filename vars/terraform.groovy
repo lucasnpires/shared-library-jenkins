@@ -8,8 +8,8 @@ def call(String command) {
                 kind: Pod
                 spec:
                 containers:
-                - name: maven
-                  image: maven:alpine
+                - name: terraform
+                  image: hashicorp/terraform
                   command:
                    - cat
                   tty: true
@@ -17,18 +17,13 @@ def call(String command) {
             }
         }
         stages {
-            stage("Imprimir Parâmetros") {
+            stage('TF Apply') {
                 steps {
-                    sh 'env | sort'
-                }
-            }
-            stage('Run maven') {
-                steps {
-                    container('maven') {
-                        sh 'mvn -version'
+                    container('terraform') {
+                        sh 'terraform apply -input=false myplan'
                     }
                 }
-            }
+            }                
         }
     }
   }
