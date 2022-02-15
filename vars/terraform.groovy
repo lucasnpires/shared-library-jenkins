@@ -11,7 +11,7 @@ def call(String command) {
                 - name: terraform
                   image: alpine
                   command:
-                   - /bin/sh -c cat
+                   - cat
                   tty: true
                 '''
             }
