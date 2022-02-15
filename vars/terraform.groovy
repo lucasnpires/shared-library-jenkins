@@ -1,5 +1,4 @@
-def call(String command) {
-  if (command == 'init') {
+def call(Map config = [:]) {
     pipeline {
         agent {
             kubernetes {
@@ -9,22 +8,21 @@ def call(String command) {
                 spec:
                 containers:
                 - name: terraform
-                  image: hashicorp/terraform
+                  image: hashicorp/terraform:latest
                   command:
-                   - /bin/sh -c cat
+                  - cat
                   tty: true
                 '''
             }
         }
         stages {
-            stage('TF Apply') {
+            stage('TF Version') {
                 steps {
-                    container('terraform') {
-                        sh 'terraform init'
+                    container('terraform') {          
+                        executeTerraform('version', config)
                     }
                 }
-            }                
+            }
         }
     }
-  }
 }
