@@ -20,7 +20,7 @@ def call(String command) {
             stage('Terraform Init') {
                 steps {
                     container('alpine') {          
-                        sh "echo terraform init"
+                        echo "echo terraform init"
                     }
                 }
             }
