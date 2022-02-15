@@ -1,3 +1,4 @@
 def call(Map config = [:]) {
-    sh "echo Executar comando: ${config.command} na ${config.cloud}"
+    sh "Cloud: ${config.cloud}"
+    sh "Command: ${config.command}"
 }
