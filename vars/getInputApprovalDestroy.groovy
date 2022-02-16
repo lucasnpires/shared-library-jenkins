@@ -1,6 +1,6 @@
 def call (){                      
     timeout ( time: 20, unit: "MINUTES" )  {
-        def userInput = input(
+        def approvalDestroyInput  = input(
             id: 'approvalDestroyInput', 
             message: 'Apply or Destroy Terraform?', 
             parameters: [
