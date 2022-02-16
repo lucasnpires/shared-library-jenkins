@@ -1,11 +1,12 @@
 def call(Map config = [:], String comandoTerraform) {
-    def dirExecucao = "terraform/${config.cloud}/${config.resourceType}/${config.projectName}"
+    def dirExecucao = "terraform/$config.cloud/$config.resourceType/$config.projectName"    
 
     if(comandoTerraform.equals('version')){
         sh "terraform --version"
     } 
     
-    else if(comandoTerraform.equals('init')){
+    else if(comandoTerraform.equals('init')){       
+
         sh """
             echo Cloud: $config.cloud
             echo ResourceType: $config.resourceType
@@ -14,11 +15,6 @@ def call(Map config = [:], String comandoTerraform) {
 
             cd $dirExecucao && terraform $comandoTerraform
         """
-        userInput = getInput()
-
-        config.projectName = userInput.ProjectName
-        config.cloud = userInput.Cloud
-        //config.resourceType = userInput.ResourceType
     } 
     
     else if(comandoTerraform.equals('fmt') || comandoTerraform.equals('validate') || comandoTerraform.equals('plan') || comandoTerraform.equals('apply') || comandoTerraform.equals('destroy')){
@@ -42,6 +38,11 @@ def getInput(){
                 ),                                
                 choice(
                         name: 'ProjectName', 
+                        choices: ['oke_public', 'oke_private'],
+                        description: 'Nome do Projeto'
+                ),
+                choice(
+                        name: 'ResourceType', 
                         choices: ['oke_public', 'oke_private'],
                         description: 'Nome do Projeto'
                 )
