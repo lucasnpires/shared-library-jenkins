@@ -12,7 +12,7 @@ def pipelineDefinition(Map config = [:]){
     } else if(config.pipelineType.equals('helm')){
         executePipelineHelm(config)
     } else {
-        throw new RuntimeException("PipelineType not exists. Please choose from the options: iac, helm")
+        throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, helm")
     }
 }
 
@@ -26,6 +26,6 @@ def executePipelineIaC(Map config = [:]){
     }  else if (config.pipelineTool.equals('ansible')){
         pipelineAnsible()
     } else {
-        throw new RuntimeException("PipelineTool not exists. Please choose from the options: terraform, ansible")
+        throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: terraform, ansible")
     }
 }
