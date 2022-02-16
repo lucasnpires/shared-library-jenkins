@@ -59,7 +59,7 @@ def call(Map config = [:]){
                 }            
                 steps {
                     script {
-                        sh "terraform apply"
+                        sh "echo terraform apply"
                     }
                     //container('terraform') {                     
                     //    executeTerraform(config, 'apply')                    
@@ -75,7 +75,7 @@ def call(Map config = [:]){
                 }            
                 steps {
                     script {
-                        sh "terraform destroy"
+                        sh "echo terraform destroy"
                     }
                     //container('terraform') {                     
                     //    executeTerraform(config, 'destroy')                    
