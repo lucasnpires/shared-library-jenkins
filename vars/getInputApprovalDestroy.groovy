@@ -11,6 +11,8 @@ def call (){
                 )
             ]
         )
-        return approvalDestroyInput
+
+        sh "echo $approvalDestroyInput"
+        //return approvalDestroyInput
     }    
 }
