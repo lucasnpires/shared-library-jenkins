@@ -58,9 +58,12 @@ def call(Map config = [:]){
                     }                
                 }            
                 steps {
-                    container('terraform') {                     
-                        executeTerraform(config, 'apply')                    
+                    script {
+                        sh "terraform apply"
                     }
+                    //container('terraform') {                     
+                    //    executeTerraform(config, 'apply')                    
+                    //}
                 }
             }
 
@@ -71,9 +74,12 @@ def call(Map config = [:]){
                     }                
                 }            
                 steps {
-                    container('terraform') {                     
-                        executeTerraform(config, 'destroy')                    
+                    script {
+                        sh "terraform destroy"
                     }
+                    //container('terraform') {                     
+                    //    executeTerraform(config, 'destroy')                    
+                    //}
                 }
             }
         }
