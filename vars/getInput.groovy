@@ -5,19 +5,19 @@ def call (){
             message: 'Preencha as informações para executar a pipeline', 
             parameters: [
                 choice(
-                        name: 'Cloud', 
-                        choices: ['oci', 'azure', 'aws'],
-                        description: 'Cloud'
+                    name: 'Cloud', 
+                    choices: ['oci', 'azure', 'aws'],
+                    description: 'Cloud'
                 ),                                
                 choice(
-                        name: 'ProjectName', 
-                        choices: ['oke_public', 'oke_private'],
-                        description: 'Nome do Projeto'
+                    name: 'ProjectName', 
+                    choices: ['oke_public', 'oke_private'],
+                    description: 'Nome do Projeto'
                 ),
                 choice(
-                        name: 'ResourceType', 
-                        choices: ['kubernetes'],
-                        description: 'Resource Type'
+                    name: 'ResourceType', 
+                    choices: ['kubernetes'],
+                    description: 'Resource Type'
                 )
             ]
         )
