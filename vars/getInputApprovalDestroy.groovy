@@ -10,9 +10,7 @@ def call (){
                     description: 'Escolha a opção que deseja executar'
                 )
             ]
-        )
-
-        sh "echo $approvalDestroyInput"
-        //return approvalDestroyInput
+        )        
+        return approvalDestroyInput
     }    
 }
