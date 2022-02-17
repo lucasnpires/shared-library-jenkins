@@ -16,7 +16,7 @@ def call (){
                 ),
                 choice(
                     name: 'ResourceType', 
-                    choices: ['kubernetes'],
+                    choices: ['kubernetes','compute_instance',''],
                     description: 'Resource Type'
                 )
             ]

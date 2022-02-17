@@ -1,3 +1,10 @@
+def parametersTerraform = [
+    projectName: '',
+    resourceType: '', 
+    cloud: '',
+    applyDestroy: ''
+]
+
 def call(Map config = [:]){
     pipeline {
         agent {
@@ -10,9 +17,9 @@ def call(Map config = [:]){
                 steps {
                     script{
                         userInput = getInput() 
-                        config.projectName = userInput.ProjectName         
-                        config.cloud = userInput.Cloud
-                        config.resourceType = userInput.ResourceType
+                        parametersTerraform.projectName = userInput.ProjectName         
+                        parametersTerraform.cloud = userInput.Cloud
+                        parametersTerraform.resourceType = userInput.ResourceType
                     }
                 }
             }
@@ -21,7 +28,7 @@ def call(Map config = [:]){
                 steps {
                     container('terraform') { 
                         //commands to use: version, init, fmt, validate, plan, apply, destroy
-                        executeTerraform(config, 'init')
+                        executeTerraform(parametersTerraform, 'init')
                     }
                 }
             }
@@ -29,8 +36,8 @@ def call(Map config = [:]){
             stage('TF Validate') {
                 steps {
                     container('terraform') {                     
-                        executeTerraform(config, 'validate')
-                        executeTerraform(config, 'fmt')
+                        executeTerraform(parametersTerraform, 'validate')
+                        executeTerraform(parametersTerraform, 'fmt')
                     }
                 }
             }
@@ -38,7 +45,7 @@ def call(Map config = [:]){
             stage('TF Plan') {
                 steps {
                     container('terraform') {                     
-                        executeTerraform(config, 'plan')                    
+                        executeTerraform(parametersTerraform, 'plan')                    
                     }
                 }
             }
@@ -62,7 +69,7 @@ def call(Map config = [:]){
                         sh "echo terraform apply"
                     }
                     //container('terraform') {                     
-                    //    executeTerraform(config, 'apply')                    
+                    //    executeTerraform(parametersTerraform, 'apply')                    
                     //}
                 }
             }
@@ -78,7 +85,7 @@ def call(Map config = [:]){
                         sh "echo terraform destroy"
                     }
                     //container('terraform') {                     
-                    //    executeTerraform(config, 'destroy')                    
+                    //    executeTerraform(parametersTerraform, 'destroy')                    
                     //}
                 }
             }

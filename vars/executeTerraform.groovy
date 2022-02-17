@@ -1,5 +1,5 @@
-def call(Map config = [:], String comandoTerraform) {
-    def dirExecucao = "terraform/$config.cloud/$config.resourceType/$config.projectName"    
+def call(Map parametersTerraform = [:], String comandoTerraform) {
+    def dirExecucao = "terraform/$parametersTerraform.cloud/$parametersTerraform.resourceType/$parametersTerraform.projectName"    
 
     if(comandoTerraform.equals('version')){
         sh "terraform --version"
@@ -8,9 +8,9 @@ def call(Map config = [:], String comandoTerraform) {
     else if(comandoTerraform.equals('init')){       
 
         sh """
-            echo Cloud: $config.cloud
-            echo ResourceType: $config.resourceType
-            echo Nome Projeto: $config.projectName
+            echo Cloud: $parametersTerraform.cloud
+            echo ResourceType: $parametersTerraform.resourceType
+            echo Nome Projeto: $parametersTerraform.projectName
             echo Diretório de Execucão: $dirExecucao
 
             cd $dirExecucao && terraform $comandoTerraform
@@ -21,34 +21,5 @@ def call(Map config = [:], String comandoTerraform) {
         sh "cd ${dirExecucao} && terraform ${comandoTerraform}"
     } else {
         sh "echo command not permited. Use init, fmt, validate, plan, apply or destroy"
-    }
-}
-
-
-def getInput(){                  
-    timeout ( time: 20, unit: "MINUTES" )  {
-        def userInput = input(
-            id: 'userInput', 
-            message: 'Preencha as informações para executar a pipeline', 
-            parameters: [
-                choice(
-                        name: 'Cloud', 
-                        choices: ['oci', 'azure', 'aws'],
-                        description: 'Cloud'
-                ),                                
-                choice(
-                        name: 'ProjectName', 
-                        choices: ['oke_public', 'oke_private'],
-                        description: 'Nome do Projeto'
-                ),
-                choice(
-                        name: 'ResourceType', 
-                        choices: ['oke_public', 'oke_private'],
-                        description: 'Nome do Projeto'
-                )
-            ]
-        )
-
-        return userInput
     }
 }
