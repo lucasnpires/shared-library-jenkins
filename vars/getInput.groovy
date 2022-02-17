@@ -17,7 +17,7 @@ def getInputCloud(){
                     name: 'ResourceType', 
                     choices: getResourceTypes('oci'),
                     description: 'Resource Type'
-                )
+                ),
                 choice(
                     name: 'ProjectName', 
                     choices: getProjects('kubernetes'),
