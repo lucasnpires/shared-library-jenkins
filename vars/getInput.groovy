@@ -2,7 +2,7 @@ def call (String inputName, String referencedInput){
 
     if(inputName.equals('cloud')){        
         def clouds = getClouds()
-        getInput(inputName, 'Cloud', 'Preencha qual a cloud deseja executar o IaC', '', clouds)
+        getInput(inputName, 'Cloud', 'Preencha qual a cloud deseja executar o IaC', 'None', clouds)
     } else {
 
     }
