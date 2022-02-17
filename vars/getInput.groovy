@@ -11,7 +11,7 @@ def call (){
                 ),                                
                 choice(
                     name: 'ProjectName', 
-                    choices: getProjects(Cloud),
+                    choices: getProjects('oci'),
                     description: 'Nome do Projeto'
                 ),
                 choice(
