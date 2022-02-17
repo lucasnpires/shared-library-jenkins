@@ -1,14 +1,14 @@
 def call (String inputName, String referencedInput){
 
-    if(inputName.equals('cloud')){
-        getInput(inputName, 'Cloud', 'Preencha qual a cloud deseja executar o IaC')
+    if(inputName.equals('cloud')){        
+        getInput(inputName, 'Cloud', 'Preencha qual a cloud deseja executar o IaC', '', getClouds())
     } else {
 
     }
 
 }
 
-def getInput(String inputName, String inputDescription, String message){
+def getInput(String inputName, String inputDescription, String message, String referencedInput, String[] inputChoices){
     timeout ( time: 20, unit: "MINUTES" )  {
         def userInput = input(
             id: 'userInput', 
@@ -16,7 +16,7 @@ def getInput(String inputName, String inputDescription, String message){
             parameters: [
                 choice(
                     name: inputName, 
-                    choices: getClouds(),
+                    choices: inputChoices,
                     description: inputDescription
                 ),                                
                 //choice(

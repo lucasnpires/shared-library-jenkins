@@ -18,7 +18,7 @@ def call(Map config = [:]){
             stage('Input Values') {
                 steps {
                     script{
-                        userInput = getInput('cloud') 
+                        userInput = getInput('cloud', '') 
                         parametersTerraform.cloud = userInput.Cloud
                         //parametersTerraform.projectName = userInput.ProjectName         
                         //parametersTerraform.resourceType = userInput.ResourceType
