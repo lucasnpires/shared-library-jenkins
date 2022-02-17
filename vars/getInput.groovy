@@ -1,15 +1,25 @@
 def call (String inputName, String referencedInput){
+    def choiceObject = [
+        name: inputName,
+        description: '',
+        message: '',
+        referencedInput: referencedInput,
+        choices: []
+    ]
 
-    if(inputName.equals('cloud')){        
-        def clouds = getClouds()
-        getInput(inputName, 'Cloud', 'Preencha qual a cloud deseja executar o IaC', 'None', clouds)
+    if(inputName.equals('cloud')){
+        choiceObject.description = 'Cloud'
+        choiceObject.message = 'Preencha qual a cloud deseja executar o IaC'
+        choiceObject.choices = getClouds()        
+        
+        getInput(choiceObject)
     } else {
-
+        sh "else"
     }
 
 }
 
-def getInput(String inputName, String inputDescription, String message, String referencedInput, String[] inputChoices){
+def getInput(Map config = [:], String inputName, String inputDescription, String message, String referencedInput, ... inputChoices){
     timeout ( time: 20, unit: "MINUTES" )  {
         def userInput = input(
             id: 'userInput', 
