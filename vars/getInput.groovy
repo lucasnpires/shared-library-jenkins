@@ -71,7 +71,7 @@ def getProjects(String resourceType){
     } else if(resourceType.equals('object_storage')) {
         return ['storage_terraform_state']
     } else {
-        return ['No Projects in ResourceType']
+        throw new Exception("No Projects in ResourceType")
     }
     
 }
