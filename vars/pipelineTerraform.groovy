@@ -28,9 +28,8 @@ def call(Map config = [:]){
                     }
 
                     script{
-                        userInput = getInput('ProjectName')   
-                        parametersTerraform.resourceType = userInput.ResourceType
-                        //parametersTerraform.projectName = userInput.ProjectName         
+                        userInput = getInput('ProjectName', parametersTerraform.resourceType)                           
+                        parametersTerraform.projectName = userInput     
                     }
                 }
             }
