@@ -6,7 +6,7 @@ def call (){
             parameters: [
                 choice(
                     name: 'Cloud', 
-                    choices: getClouds()
+                    choices: getClouds(),
                     description: 'Cloud'
                 ),                                
                 choice(
