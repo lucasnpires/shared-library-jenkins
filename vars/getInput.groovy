@@ -1,28 +1,34 @@
-def call (){                      
-      getInputCloud()
+def call (String inputName, String referencedInput){
+
+    if(inputName.equals('cloud')){
+        getInput(inputName, 'Cloud', 'Preencha qual a cloud deseja executar o IaC')
+    } else {
+
+    }
+
 }
 
-def getInputCloud(){
+def getInput(String inputName, String inputDescription, String message){
     timeout ( time: 20, unit: "MINUTES" )  {
         def userInput = input(
             id: 'userInput', 
-            message: 'Preencha as informações para executar a pipeline', 
+            message: message, 
             parameters: [
                 choice(
-                    name: 'Cloud', 
+                    name: inputName, 
                     choices: getClouds(),
-                    description: 'Cloud'
+                    description: inputDescription
                 ),                                
-                choice(
-                    name: 'ResourceType', 
-                    choices: getResourceTypes('oci'),
-                    description: 'Resource Type'
-                ),
-                choice(
-                    name: 'ProjectName', 
-                    choices: getProjects('kubernetes'),
-                    description: 'Nome do Projeto'
-                ),
+                //choice(
+                //    name: 'ResourceType', 
+                //    choices: getResourceTypes('azure'),
+                //    description: 'Resource Type'
+                //),
+                //choice(
+                //    name: 'ProjectName', 
+                //    choices: getProjects('kubernetes'),
+                //    description: 'Nome do Projeto'
+                //),
             ]
         )
 
