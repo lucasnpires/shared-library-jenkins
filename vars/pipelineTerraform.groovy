@@ -1,11 +1,13 @@
-def parametersTerraform = [
-    projectName: '',
-    resourceType: '', 
-    cloud: '',
-    applyDestroy: ''
-]
 
 def call(Map config = [:]){
+    
+    def parametersTerraform = [
+        projectName: '',
+        resourceType: '', 
+        cloud: '',
+        applyDestroy: ''
+    ]
+
     pipeline {
         agent {
             kubernetes {
