@@ -1,4 +1,8 @@
 def call (){                      
+      getInputCloud()
+}
+
+def getInputCloud(){
     timeout ( time: 20, unit: "MINUTES" )  {
         def userInput = input(
             id: 'userInput', 
@@ -23,7 +27,7 @@ def call (){
         )
 
         return userInput
-    }    
+    }  
 }
 
 def getClouds(){
