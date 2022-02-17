@@ -2,18 +2,24 @@ def call (String inputName, String referencedInput){
     def choiceObject = [
         name: inputName,
         description: '',
-        message: '',
+        message: 'Terraform IaC',
         referencedInput: referencedInput,
         choices: []
     ]
 
     if(inputName.equals('cloud')){
-        choiceObject.description = 'Cloud'
-        choiceObject.message = 'Preencha qual a cloud deseja executar o IaC'
-        choiceObject.choices = getClouds()        
+        choiceObject.description = "Qual cloud deseja executar?"
+        choiceObject.choices = getClouds()
         
         executeInput(choiceObject)
-    } else {
+    } else if(inputName.equals('resourceType')){
+        choiceObject.description = "Qual o ResourceType dentro da $referencedInput?"
+        choiceObject.choices = getResourceTypes(referencedInput)
+        
+        executeInput(choiceObject)
+    }
+    
+    else {
         sh "else"
     }
 

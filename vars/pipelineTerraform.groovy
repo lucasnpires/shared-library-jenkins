@@ -24,11 +24,12 @@ def call(Map config = [:]){
                         //parametersTerraform.resourceType = userInput.ResourceType
                     }
 
-                    //script{
-                    //    userInput = getInput('resourceType', parametersTerraform.cloud)   
-                    //    parametersTerraform.resourceType = userInput.ResourceType
-                    //    //parametersTerraform.projectName = userInput.ProjectName         
-                    //}
+                    script{
+                        userInput = getInput('resourceType', parametersTerraform.cloud)   
+                        parametersTerraform.resourceType = userInput.ResourceType
+                        //parametersTerraform.projectName = userInput.ProjectName         
+                    }
+                    
                     //script{
                     //    userInput = getInput('resourceType')   
                     //    parametersTerraform.resourceType = userInput.ResourceType
