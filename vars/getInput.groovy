@@ -36,7 +36,7 @@ def getClouds(){
 
 def getResourceTypes(String cloud){
     if(cloud.equals('oci')){
-        return ['container_registry','compute_instance','identity','kubernetes','network','object_storage'],
+        return ['container_registry','compute_instance','identity','kubernetes','network','object_storage']
     } else {
         return ['No ResourcesType in Cloud']
     }
