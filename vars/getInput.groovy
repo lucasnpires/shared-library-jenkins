@@ -9,31 +9,31 @@ def call (String inputName, String referencedInput){
 
     if(inputName.equals('Cloud')){
         choiceObject.description = "Qual cloud deseja executar?"
-        choiceObject.message = "Terraform IaC"
+        choiceObject.message = "Cloud"
         choiceObject.choices = getClouds()
         
         executeInput(choiceObject)
     } else if(inputName.equals('ResourceType')){
         choiceObject.description = "Qual o ResourceType dentro da $referencedInput?"
-        choiceObject.message = "Terraform IaC"
+        choiceObject.message = "IaC - Resource Type"
         choiceObject.choices = getResourceTypes(referencedInput)
         
         executeInput(choiceObject)
     } else if(inputName.equals('ProjectName')){
         choiceObject.description = "Qual o Projeto $referencedInput deseja executar?"
-        choiceObject.message = "Terraform IaC"
+        choiceObject.message = "IaC - Project Name"
         choiceObject.choices = getProjects(referencedInput)
         
         executeInput(choiceObject)
     } else if(inputName.equals('Helm')){
         choiceObject.description = "Qual o Helm que deseja fazer o deploy na Cloud: $referencedInput?"
-        choiceObject.message = "Deploy Helm"
+        choiceObject.message = "Deploy - Helm"
         choiceObject.choices = ['gitlab','wikijs','jenkins']
         
         executeInput(choiceObject)
     } else if(inputName.equals('Cluster')){
         choiceObject.description = "Qual o Cluster da $referencedInput deseja fazer o deploy?"
-        choiceObject.message = "Deploy Helm"
+        choiceObject.message = "Deploy - Cluster"
         choiceObject.choices = getClusters(referencedInput)
         
         executeInput(choiceObject)
