@@ -19,16 +19,16 @@ def call (String inputName, String referencedInput){
 
 }
 
-def executeInput(Map config = [:]){
+def executeInput(Map choiceObject = [:]){
     timeout ( time: 20, unit: "MINUTES" )  {
         def userInput = input(
             id: 'userInput', 
-            message: message, 
+            message: choiceObject.message, 
             parameters: [
                 choice(
-                    name: inputName, 
-                    choices: inputChoices,
-                    description: inputDescription
+                    name: choiceObject.name, 
+                    choices: choiceObject.choices,
+                    description: choiceObject.description
                 ),                                
                 //choice(
                 //    name: 'ResourceType', 
