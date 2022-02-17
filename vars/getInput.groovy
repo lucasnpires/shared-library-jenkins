@@ -20,7 +20,7 @@ def call (String inputName, String referencedInput){
     }
     
     else {
-        throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, helm")
+        throw new RuntimeException("InputName not exists.")
     }
 
 }
