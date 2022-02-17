@@ -12,14 +12,14 @@ def call (String inputName, String referencedInput){
         choiceObject.message = 'Preencha qual a cloud deseja executar o IaC'
         choiceObject.choices = getClouds()        
         
-        getInput(choiceObject)
+        executeInput(choiceObject)
     } else {
         sh "else"
     }
 
 }
 
-def getInput(Map config = [:], String inputName, String inputDescription, String message, String referencedInput, ... inputChoices){
+def executeInput(Map config = [:]){
     timeout ( time: 20, unit: "MINUTES" )  {
         def userInput = input(
             id: 'userInput', 
