@@ -37,6 +37,14 @@ def call(Map config = [:]){
                     }
                 }
             }
+
+            stage('Helm Validate') {
+                steps {
+                    container('helm') {                         
+                        executeHelm('validate', parametersHelm)
+                    }
+                }
+            }
         }
     }
 }

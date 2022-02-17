@@ -28,7 +28,7 @@ def call (String inputName, String referencedInput){
     } else if(inputName.equals('Helm')){
         choiceObject.description = "Qual o Helm que deseja fazer o deploy na Cloud: $referencedInput?"
         choiceObject.message = "Deploy - Helm"
-        choiceObject.choices = ['gitlab','wikijs','jenkins']
+        choiceObject.choices = getHelms()
         
         executeInput(choiceObject)
     } else if(inputName.equals('Cluster')){
@@ -102,4 +102,8 @@ def getClusters(String cloud){
         throw new Exception("No clusters in cloud: $cloud")
     }
 
+}
+
+def getHelms(){
+    return ['gitlab','wikijs','jenkins','nginx-ingress','nexus','sonar']
 }
