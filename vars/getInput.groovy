@@ -7,12 +7,12 @@ def call (String inputName, String referencedInput){
         choices: []
     ]
 
-    if(inputName.equals('cloud')){
+    if(inputName.equals('Cloud')){
         choiceObject.description = "Qual cloud deseja executar?"
         choiceObject.choices = getClouds()
         
         executeInput(choiceObject)
-    } else if(inputName.equals('resourceType')){
+    } else if(inputName.equals('ResourceType')){
         choiceObject.description = "Qual o ResourceType dentro da $referencedInput?"
         choiceObject.choices = getResourceTypes(referencedInput)
         
@@ -20,7 +20,7 @@ def call (String inputName, String referencedInput){
     }
     
     else {
-        sh "else"
+        throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, helm")
     }
 
 }
