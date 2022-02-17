@@ -23,16 +23,15 @@ def call(Map config = [:]){
                     }
 
                     script{
-                        userInput = getInput('ResourceType', parametersTerraform.cloud)   
-                        sh "echo userInput returned in ResourceType: $userInput"
-                        //parametersTerraform.resourceType = userInput.ResourceType
+                        userInput = getInput('ResourceType', parametersTerraform.cloud)                        
+                        parametersTerraform.resourceType = userInput
                     }
 
-                    //script{
-                    //    userInput = getInput('resourceType')   
-                    //    parametersTerraform.resourceType = userInput.ResourceType
-                    //    //parametersTerraform.projectName = userInput.ProjectName         
-                    //}
+                    script{
+                        userInput = getInput('ProjectName')   
+                        parametersTerraform.resourceType = userInput.ResourceType
+                        //parametersTerraform.projectName = userInput.ProjectName         
+                    }
                 }
             }
 

@@ -17,6 +17,11 @@ def call (String inputName, String referencedInput){
         choiceObject.choices = getResourceTypes(referencedInput)
         
         executeInput(choiceObject)
+    } else if(inputName.equals('ProjectName')){
+        choiceObject.description = "Qual o Projeto $referencedInput deseja executar?"
+        choiceObject.choices = getProjects(referencedInput)
+        
+        executeInput(choiceObject)
     }
     
     else {
@@ -35,17 +40,7 @@ def executeInput(Map choiceObject = [:]){
                     name: choiceObject.name, 
                     choices: choiceObject.choices,
                     description: choiceObject.description
-                ),                                
-                //choice(
-                //    name: 'ResourceType', 
-                //    choices: getResourceTypes('azure'),
-                //    description: 'Resource Type'
-                //),
-                //choice(
-                //    name: 'ProjectName', 
-                //    choices: getProjects('kubernetes'),
-                //    description: 'Nome do Projeto'
-                //),
+                )
             ]
         )
 
