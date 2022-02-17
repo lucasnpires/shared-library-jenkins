@@ -18,16 +18,15 @@ def call(Map config = [:]){
             stage('Input Values') {
                 steps {
                     script{
-                        userInput = getInput('Cloud', '') 
-                        sh "echo userInput returned Cloud: $userInput"
-                        //parametersTerraform.cloud = userInput.Cloud
+                        userInput = getInput('Cloud', '')                         
+                        parametersTerraform.cloud = userInput
                     }
 
-                    //script{
-                    //    userInput = getInput('ResourceType', parametersTerraform.cloud)   
-                    //    sh "echo $userInput"
-                    //    //parametersTerraform.resourceType = userInput.ResourceType
-                    //}
+                    script{
+                        userInput = getInput('ResourceType', parametersTerraform.cloud)   
+                        sh "echo userInput returned in ResourceType: $userInput"
+                        //parametersTerraform.resourceType = userInput.ResourceType
+                    }
 
                     //script{
                     //    userInput = getInput('resourceType')   
