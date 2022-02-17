@@ -19,17 +19,14 @@ def call(Map config = [:]){
                 steps {
                     script{
                         userInput = getInput('cloud', '') 
-                        parametersTerraform.cloud = userInput.Cloud
-                        //parametersTerraform.projectName = userInput.ProjectName         
-                        //parametersTerraform.resourceType = userInput.ResourceType
+                        parametersTerraform.cloud = userInput.Cloud                       
                     }
 
                     script{
                         userInput = getInput('resourceType', parametersTerraform.cloud)   
                         parametersTerraform.resourceType = userInput.ResourceType
-                        //parametersTerraform.projectName = userInput.ProjectName         
                     }
-                    
+
                     //script{
                     //    userInput = getInput('resourceType')   
                     //    parametersTerraform.resourceType = userInput.ResourceType
