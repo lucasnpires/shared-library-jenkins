@@ -4,8 +4,7 @@ def call (){
             id: 'userInput', 
             message: 'Preencha as informações para executar a pipeline', 
             parameters: [
-                [$class: 'ChoiceParameter', 
-                    choiceType: 'PT_SINGLE_SELECT', 
+                [$class: 'ChoiceParameter',                     
                     description: 'Select the Environemnt from the Dropdown List', 
                     filterLength: 1, 
                     filterable: false, 
