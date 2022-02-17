@@ -30,9 +30,9 @@ def call(Map config = [:]){
                         parametersHelm.helm = userInput
                     }
 
-                    // Select Cluster provisioning to Helm
+                    // Select Cluster in Cloud provisioning to Helm
                     script{
-                        userInput = getInput('Cluster', parametersHelm.helm)                        
+                        userInput = getInput('Cluster', parametersHelm.cloud)                        
                         parametersHelm.cluster = userInput
                     }
                 }
