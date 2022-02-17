@@ -15,7 +15,7 @@ def getInputCloud(){
                 ),                                
                 choice(
                     name: 'ResourceType', 
-                    choices: getResourceTypes('oci')
+                    choices: getResourceTypes('oci'),
                     description: 'Resource Type'
                 )
                 choice(
