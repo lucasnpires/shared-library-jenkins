@@ -55,8 +55,8 @@ def getClouds(){
 def getResourceTypes(String cloud){
     if(cloud.equals('oci')){
         return ['container_registry','compute_instance','identity','kubernetes','network','object_storage']
-    } else {
-        return ['No ResourcesType in Cloud']
+    } else {        
+        throw new Exception("No ResourcesType in Cloud: $cloud")
     }
 }
 
@@ -71,7 +71,6 @@ def getProjects(String resourceType){
     } else if(resourceType.equals('object_storage')) {
         return ['storage_terraform_state']
     } else {
-        throw new Exception("No Projects in ResourceType")
-    }
-    
+        throw new Exception("No Projects in ResourceType: $resourceType")
+    }    
 }
