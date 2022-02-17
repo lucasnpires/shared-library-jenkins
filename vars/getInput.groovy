@@ -6,7 +6,7 @@ def call (){
             parameters: [
                 choice(
                     name: 'Cloud', 
-                    choices: ['oci', 'azure', 'aws'],
+                    choices: getClouds()
                     description: 'Cloud'
                 ),                                
                 choice(
@@ -24,4 +24,8 @@ def call (){
 
         return userInput
     }    
+}
+
+def getClouds(){
+    return ['oci','azure']
 }
