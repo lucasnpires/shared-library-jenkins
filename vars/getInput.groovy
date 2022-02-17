@@ -10,15 +10,15 @@ def call (){
                     description: 'Cloud'
                 ),                                
                 choice(
-                    name: 'ProjectName', 
-                    choices: getProjects('oci'),
-                    description: 'Nome do Projeto'
-                ),
-                choice(
                     name: 'ResourceType', 
-                    choices: ['kubernetes','compute_instance',''],
+                    choices: getResourceTypes('oci')
                     description: 'Resource Type'
                 )
+                choice(
+                    name: 'ProjectName', 
+                    choices: getProjects('kubernetes'),
+                    description: 'Nome do Projeto'
+                ),
             ]
         )
 
@@ -30,12 +30,26 @@ def getClouds(){
     return ['oci','azure']
 }
 
-def getProjects(String cloud){
-
+def getResourceTypes(String cloud){
     if(cloud.equals('oci')){
-        return ['oke_public', 'oke_private']
+        return ['container_registry','compute_instance','identity','kubernetes','network','object_storage'],
     } else {
-        return ['No Projects in Cloud']
+        return ['No ResourcesType in Cloud']
+    }
+}
+
+def getProjects(String resourceType){   
+
+    if(cloud.equals('kubernetes')){
+        return ['oke_private', 'oke_public']
+    } else if(cloud.equals('identity')) {
+        return ['auth_token']
+    } else if(cloud.equals('vnc_default')) {
+        return ['auth_token']
+    } else if(cloud.equals('object_storage')) {
+        return ['storage_terraform_state']
+    } else {
+        return ['No Projects in ResourceType']
     }
     
 }
