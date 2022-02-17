@@ -18,17 +18,19 @@ def call(Map config = [:]){
             stage('Input Values') {
                 steps {
 
-                    // input values cloud
+                     // select Cloud provisioning IaC
                     script{
                         userInput = getInput('Cloud', '')                         
                         parametersTerraform.cloud = userInput
                     }
-
+                    
+                    // select ResourceType provisioning in Cloud
                     script{
                         userInput = getInput('ResourceType', parametersTerraform.cloud)                        
                         parametersTerraform.resourceType = userInput
                     }
 
+                    // select ProjectName provisioning in Cloud
                     script{
                         userInput = getInput('ProjectName', parametersTerraform.resourceType)                           
                         parametersTerraform.projectName = userInput     
