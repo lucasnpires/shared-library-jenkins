@@ -3,16 +3,15 @@ def call(Map config = [:]){
 }
 
 /*  Método responsável por avaliar qual o PipelineType
-    Exemplo: iac, helm, etc...
+    Exemplo: iac, deploy, etc...
 **/
-def pipelineDefinition(Map config = [:]){    
-    
+def pipelineDefinition(Map config = [:]){        
     if(config.pipelineType.equals('iac')){
         executePipelineIaC(config)
-    } else if(config.pipelineType.equals('helm')){
-        executePipelineHelm(config)
+    } else if(config.pipelineType.equals('deploy')){
+        executePipelineDeploy(config)
     } else {
-        throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, helm")
+        throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, deploy")
     }
 }
 
@@ -27,5 +26,19 @@ def executePipelineIaC(Map config = [:]){
         pipelineAnsible()
     } else {
         throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: terraform, ansible")
+    }
+}
+
+/*  Método responsável por executar a pipeline de Helm, baseado no paramâmetro pipelineTool
+    Exemplo: terraform, ansible, etc...
+**/
+def executePipelineDeploy(Map config = [:]){
+
+    if(config.pipelineTool.equals('helm')){
+        pipelineHelm(config)
+    }  else if (config.pipelineTool.equals('kubectl')){
+        pipelineKubectl()
+    } else {
+        throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: helm, kubectl")
     }
 }
