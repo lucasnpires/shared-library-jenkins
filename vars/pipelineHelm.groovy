@@ -2,7 +2,7 @@
 def call(Map config = [:]){
 
     def parametersHelm
-    
+
     pipeline {
         agent {
             kubernetes {
@@ -12,7 +12,9 @@ def call(Map config = [:]){
         stages {
             stage('Input Values') {
                 steps {
-                    parametersHelm = inputsHelm()
+                    script {
+                        parametersHelm = inputsHelm()
+                    }
                 }
             }
 
