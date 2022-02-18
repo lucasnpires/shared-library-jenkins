@@ -1,7 +1,7 @@
 def call(){
     def parametersHelm = [
         cloud: '',
-        helm: '',
+        name: '',
         cluster: '',
         squad: '',
         environmentDeploy: ''
@@ -17,7 +17,7 @@ def call(){
         
         // Select Helm provisioning in Cloud
         userInput = getInput("Helm", "Qual o Helm que deseja fazer o deploy na Cloud: $parametersHelm.cloud?", "Deploy - Helm", inputDeploy.getHelms()) 
-        parametersHelm.helm = userInput
+        parametersHelm.name = userInput
         
         // Select Cluster in Cloud provisioning to Helm        
         userInput = getInput("Cluster", "Qual o Cluster da $parametersHelm.cloud deseja fazer o deploy?", "Deploy - Cluster", inputDeploy.getClusters(parametersHelm.cloud))

@@ -1,12 +1,12 @@
 def call(String comandoHelm, Map parametersHelm = [:]) {
 
-    def helmName = parametersHelm.helm
+    def helmAlias = "$parametersHelm.squad-$parametersHelm.helm-$parametersHelm.environmentDeploy"
 
     if(comandoHelm.equals('validate')){
         sh """
-            cd $helmName
+            cd $parametersHelm.name
             ls -lha
-            echo helm upgrade --install $helmName ../../helm-charts/$helmName -n $helmName --values ./$helmName-values.yaml --create-namespace --debug --wait --atomic --cleanup-on-fail
+            echo helm upgrade --install $helmAlias ../../helm-charts/$parametersHelm.name -n $helmAlias --values ./$parametersHelm.name-values.yaml --create-namespace --debug --wait --atomic --cleanup-on-fail
         """
     } else if(comandoHelm.equals('install')){
 
