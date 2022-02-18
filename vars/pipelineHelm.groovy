@@ -1,7 +1,8 @@
 
 def call(Map config = [:]){
 
-
+    def parametersHelm
+    
     pipeline {
         agent {
             kubernetes {
