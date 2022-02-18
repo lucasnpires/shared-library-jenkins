@@ -8,14 +8,13 @@ def call(){
     ]
 
 
-    script {
-        
+    script {        
         // Select Cloud provisioning Helm
         userInput = getInput('Cloud', '')
         parametersHelm.cloud = userInput
         
         // Select Helm provisioning in Cloud
-        userInput = scriptInput('Helm', parametersHelm.cloud)                        
+        userInput = getInput('Helm', parametersHelm.cloud)                        
         parametersHelm.helm = userInput
         
         // Select Cluster in Cloud provisioning to Helm
@@ -31,6 +30,5 @@ def call(){
         parametersHelm.environmentDeploy = userInput
 
         return parametersHelm
-
     }
 }
