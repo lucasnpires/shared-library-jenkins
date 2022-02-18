@@ -45,7 +45,7 @@ def call (String inputName, String referencedInput){
         choiceObject.choices = inputDeploy.getSquads()
         
         executeInput(choiceObject)
-    }  else if(inputName.equals('Cluster')){
+    }  else if(inputName.equals('Env')){
         choiceObject.description = "Qual o environment do deploy (dev, hml, prod, sup)?"
         choiceObject.message = "Deploy - Environment"
         choiceObject.choices = inputDeploy.getEnvironments()
