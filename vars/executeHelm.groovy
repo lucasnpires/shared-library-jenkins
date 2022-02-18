@@ -1,6 +1,6 @@
 def call(String comandoHelm, Map parametersHelm = [:]) {
 
-    def helmAlias = "$parametersHelm.squad-$parametersHelm.helm-$parametersHelm.environmentDeploy"
+    def helmAlias = "$parametersHelm.squad-$parametersHelm.name-$parametersHelm.environmentDeploy"
 
     if(comandoHelm.equals('validate')){
         sh """
