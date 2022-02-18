@@ -1,8 +1,12 @@
 def call(String comandoHelm, Map parametersHelm = [:]) {
 
+    def helmName = parametersHelm.helm
+
     if(comandoHelm.equals('validate')){
         sh """
-            echo helm upgrade --install $parametersHelm.helm $parametersHelm.repo -n $parametersHelm.namespace --values ./nginx-ingress-values.yaml --create-namespace --debug --wait --atomic --cleanup-on-fail
+            cd $helmName
+            ls -lha
+            echo helm upgrade --install $helmName ../../helm-charts/$helmName -n $helmName --values ./$helmName-values.yaml --create-namespace --debug --wait --atomic --cleanup-on-fail
         """
     } else if(comandoHelm.equals('install')){
 
