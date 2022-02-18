@@ -1,12 +1,7 @@
 
 def call(Map config = [:]){
 
-    def parametersTerraform = [
-        projectName: '',
-        resourceType: '', 
-        cloud: '',
-        applyDestroy: ''
-    ]
+    def parametersTerraform
 
     pipeline {
         agent {
@@ -17,24 +12,11 @@ def call(Map config = [:]){
         stages {
             stage('Input Values') {
                 steps {
-
-                     // select Cloud provisioning IaC
                     script{
-                        userInput = getInput('Cloud', '')                         
-                        parametersTerraform.cloud = userInput
-                    }
-                    
-                    // select ResourceType provisioning in Cloud
-                    script{
-                        userInput = getInput('ResourceType', parametersTerraform.cloud)                        
-                        parametersTerraform.resourceType = userInput
-                    }
-
-                    // select ProjectName provisioning in Cloud
-                    script{
-                        userInput = getInput('ProjectName', parametersTerraform.resourceType)                           
-                        parametersTerraform.projectName = userInput     
-                    }
+                        parametersTerraform = inputsTerraform()
+                        
+                        
+                    }                    
                 }
             }
 
