@@ -4,7 +4,10 @@ def call(Map config = [:]){
     def parametersHelm = [
         cloud: '',
         helm: '',
-        cluster: ''   
+        cluster: '',
+        squad: '',
+        environmentDeploy: ''
+
     ]
 
 
@@ -17,6 +20,8 @@ def call(Map config = [:]){
         stages {
             stage('Input Values') {
                 steps {
+                    
+                    
 
                     // Select Cloud provisioning Helm
                     script{
@@ -34,6 +39,18 @@ def call(Map config = [:]){
                     script{
                         userInput = getInput('Cluster', parametersHelm.cloud)                        
                         parametersHelm.cluster = userInput
+                    } 
+
+                    // Select Squad - posop, plata, cocre
+                    script{
+                        userInput = getInput('Squad', '')                        
+                        parametersHelm.squad = userInput
+                    }  
+
+                    // Select Env - dev, hml, prod, sup 
+                    script{
+                        userInput = getInput('Env', '')                        
+                        parametersHelm.environmentDeploy = userInput
                     }
                 }
             }

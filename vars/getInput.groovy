@@ -7,39 +7,51 @@ def call (String inputName, String referencedInput){
         choices: []
     ]
 
+    inputDeploy = new getInputDeploy()
+
     if(inputName.equals('Cloud')){
         choiceObject.description = "Qual cloud deseja executar?"
         choiceObject.message = "Cloud"
-        choiceObject.choices = getClouds()
+        choiceObject.choices = inputDeploy.getClouds()
         
         executeInput(choiceObject)
     } else if(inputName.equals('ResourceType')){
         choiceObject.description = "Qual o ResourceType dentro da $referencedInput?"
         choiceObject.message = "IaC - Resource Type"
-        choiceObject.choices = getResourceTypes(referencedInput)
+        choiceObject.choices = inputDeploy.getResourceTypes(referencedInput)
         
         executeInput(choiceObject)
     } else if(inputName.equals('ProjectName')){
         choiceObject.description = "Qual o Projeto $referencedInput deseja executar?"
         choiceObject.message = "IaC - Project Name"
-        choiceObject.choices = getProjects(referencedInput)
+        choiceObject.choices = inputDeploy.getProjects(referencedInput)
         
         executeInput(choiceObject)
     } else if(inputName.equals('Helm')){
         choiceObject.description = "Qual o Helm que deseja fazer o deploy na Cloud: $referencedInput?"
         choiceObject.message = "Deploy - Helm"
-        choiceObject.choices = getHelms()
+        choiceObject.choices = inputDeploy.getHelms()
         
         executeInput(choiceObject)
     } else if(inputName.equals('Cluster')){
         choiceObject.description = "Qual o Cluster da $referencedInput deseja fazer o deploy?"
         choiceObject.message = "Deploy - Cluster"
-        choiceObject.choices = getClusters(referencedInput)
+        choiceObject.choices = inputDeploy.getClusters(referencedInput)
         
         executeInput(choiceObject)
-    }
-    
-    else {
+    }  else if(inputName.equals('Squad')){
+        choiceObject.description = "Qual a squad responsável pelo deploy?"
+        choiceObject.message = "Deploy - Squad"
+        choiceObject.choices = inputDeploy.getSquads()
+        
+        executeInput(choiceObject)
+    }  else if(inputName.equals('Cluster')){
+        choiceObject.description = "Qual o environment do deploy (dev, hml, prod, sup)?"
+        choiceObject.message = "Deploy - Environment"
+        choiceObject.choices = inputDeploy.getEnvironments()
+        
+        executeInput(choiceObject)
+    } else {
         throw new RuntimeException("InputName not exists.")
     }
 
@@ -58,52 +70,7 @@ def executeInput(Map choiceObject = [:]){
                 )
             ]
         )
-
         return userInput
     }  
 }
 
-def getClouds(){
-    return ['oci','azure']
-}
-
-def getResourceTypes(String cloud){
-    if(cloud.equals('oci')){
-        return ['container_registry','compute_instance','identity','kubernetes','network','object_storage']
-    } else {        
-        throw new Exception("No ResourcesType in Cloud: $cloud")
-    }
-}
-
-def getProjects(String resourceType){   
-
-    if(resourceType.equals('kubernetes')){
-        return ['oke_private', 'oke_public']
-    } else if(resourceType.equals('identity')) {
-        return ['auth_token']
-    } else if(resourceType.equals('vnc_default')) {
-        return ['auth_token']
-    } else if(resourceType.equals('object_storage')) {
-        return ['storage_terraform_state']
-    } else {
-        throw new Exception("No Projects in ResourceType: $resourceType")
-    }    
-}
-
-def getClusters(String cloud){
-
-    if(cloud.equals('oci')){
-        return ['oke-01', 'oke-02']
-    } else if(cloud.equals('azure')){
-        return ['aks-01', 'aks-02']
-    } else if(cloud.equals('azure')){
-        return ['aks-01', 'aks-02']
-    } else {
-        throw new Exception("No clusters in cloud: $cloud")
-    }
-
-}
-
-def getHelms(){
-    return ['gitlab','wikijs','jenkins','nginx-ingress','nexus','sonar']
-}
