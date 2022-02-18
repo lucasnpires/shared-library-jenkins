@@ -1,4 +1,4 @@
-def call (String inputName, String inputDescription, String inputMessage, String [] inputChoices){
+def call (String inputName, String inputDescription, String inputMessage, ArrayList inputChoices){
     
     def choiceObject = [
         name: inputName,
