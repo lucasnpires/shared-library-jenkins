@@ -48,5 +48,5 @@ def getEnvironments(){
 }
 
 def getSquads(){
-    return ['posop','plata','crocre']
+    return ['posop','plata','cocre']
 }
