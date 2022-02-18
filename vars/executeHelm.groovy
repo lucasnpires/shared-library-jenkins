@@ -4,9 +4,8 @@ def call(String comandoHelm, Map parametersHelm = [:]) {
 
     if(comandoHelm.equals('validate')){
         sh """
-            cd $parametersHelm.name
-            ls -lha
-            echo helm upgrade --install $helmAlias ../../helm-charts/$parametersHelm.name -n $helmAlias --values ./$parametersHelm.name-values.yaml --create-namespace --debug --wait --atomic --cleanup-on-fail
+            cd $parametersHelm.name            
+            echo helm upgrade --install $helmAlias ../../helm-charts/$parametersHelm.name -n $helmAlias --values ./$parametersHelm.name-values.yaml --create-namespace --debug --wait --atomic --cleanup-on-fail --timeout 5m
         """
     } else if(comandoHelm.equals('install')){
 
