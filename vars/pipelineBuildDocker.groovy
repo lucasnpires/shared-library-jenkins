@@ -20,7 +20,7 @@ def call(){
             stage('Build Image Docker') {
                 steps {
                    container('docker') {
-                       executeDocker(parameterDock)                        
+                       executeDocker(parametersDocker)                        
                     }
                 }
             }
