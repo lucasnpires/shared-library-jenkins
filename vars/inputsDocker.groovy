@@ -9,7 +9,7 @@ def call(){
 
         // Select Project Name
         userInput = getInput("ProjectName", "Qual é Nome do Projeto?", "Docker Project Name", inputs.getProjects())               
-        parametersDocker.cloud = projectName
+        parametersDocker.projectName = userInput
 
         return parametersDocker
     }
