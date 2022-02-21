@@ -39,7 +39,7 @@ class ExecutePipeline implements Serializable {
         println(configExecuteInputDocker)
 
         if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
-            pipelineBuildDocker()
+            pipelineBuildDocker(configExecuteInputDocker)
         }  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
             pipelineBuildJava()
         } else {

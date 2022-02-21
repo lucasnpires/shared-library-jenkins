@@ -1,4 +1,4 @@
-def call(Boolean executeInputDocker){
+def call(String executeInputDocker){
     def parametersDocker
 
     pipeline {       
@@ -12,7 +12,7 @@ def call(Boolean executeInputDocker){
             stage('Input Values') {
                 when { 
                     expression {
-                        executeInputDocker == true
+                        executeInputDocker.equals("true")
                     }                
                 }  
                 steps {
