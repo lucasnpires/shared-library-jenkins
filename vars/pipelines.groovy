@@ -10,6 +10,8 @@ def pipelineDefinition(Map config = [:]){
         executePipelineIaC(config)
     } else if(config.pipelineType.equals('deploy')){
         executePipelineDeploy(config)
+    }  else if(config.pipelineType.equals('build')){
+        executePipelineBuild(config)
     } else {
         throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, deploy")
     }
@@ -41,4 +43,16 @@ def executePipelineDeploy(Map config = [:]){
     } else {
         throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: helm, kubectl")
     }
+}
+
+def executePipelineBuild(Map config = [:]){
+
+    if(config.pipelineTool.equals('docker')){
+        pipelineBuildDocker()
+    }  else if (config.pipelineTool.equals('java')){
+        pipelineBuildJava()
+    } else {
+        throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: docker, java")
+    }
+
 }

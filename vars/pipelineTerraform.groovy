@@ -14,8 +14,6 @@ def call(Map config = [:]){
                 steps {
                     script{
                         parametersTerraform = inputsTerraform()
-                        
-                        
                     }                    
                 }
             }
@@ -49,7 +47,7 @@ def call(Map config = [:]){
             stage('TF Approval') {
                 steps {
                     script {              
-                        config.applyDestroy = getInputApprovalDestroy()          
+                        parametersTerraform.applyDestroy = getInputApprovalDestroy()          
                     }
                 }
             }
@@ -57,7 +55,7 @@ def call(Map config = [:]){
             stage('TF Apply') {
                 when { 
                     expression {
-                        config.applyDestroy == 'apply'
+                        parametersTerraform.applyDestroy == 'apply'
                     }                
                 }            
                 steps {
@@ -73,7 +71,7 @@ def call(Map config = [:]){
             stage('TF Destroy') {
                 when { 
                     expression {
-                        config.applyDestroy == 'destroy'
+                        parametersTerraform.applyDestroy == 'destroy'
                     }                
                 }            
                 steps {
