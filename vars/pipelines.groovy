@@ -1,5 +1,5 @@
 import br.com.renner.services.PipelineDefinition
 
-def call(Map config = [:]){
-    new PipelineDefinition().defineExecution(config)
+def call(Map args=[:]){
+    new PipelineDefinition(this).defineExecution("${args}")
 }
