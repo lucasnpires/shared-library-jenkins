@@ -17,7 +17,7 @@ def call(){
                 }
             }
 
-            stage('Run Docker') {
+            stage('Build Image Docker') {
                 steps {
                    container('docker') {
                         sh "cd $parametersDocker.projectName && ls -lha && docker version"
