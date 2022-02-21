@@ -1,3 +1,5 @@
+import br.com.renner.utils.ChoicesInputs
+
 def call(){
     def parametersHelm = [
         cloud: '',
@@ -7,7 +9,7 @@ def call(){
         environmentDeploy: ''
     ]
 
-    inputDeploy = new getInputDeploy()
+    inputDeploy = new ChoicesInputs()
 
 
     script {        

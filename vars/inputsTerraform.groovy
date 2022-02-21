@@ -1,3 +1,5 @@
+import br.com.renner.utils.ChoicesInputs
+
 def call(){
     def parametersTerraform = [
         projectName: '',
@@ -5,7 +7,7 @@ def call(){
         cloud: '',
     ]
 
-    inputDeploy = new getInputDeploy()
+    inputDeploy = new ChoicesInputs()
 
     script {
 
