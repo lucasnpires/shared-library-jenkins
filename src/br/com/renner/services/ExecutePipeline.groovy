@@ -23,9 +23,9 @@ class ExecutePipeline implements Serializable {
     **/
     def deploy(Map config = [:]){
 
-        if(config.pipelineTool.equals((Constants.PIPELINE_TOOL_HELM)){
+        if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_HELM)){
             pipelineHelm(config)
-        }  else if (config.pipelineTool.equals((Constants.PIPELINE_TOOL_KUBECTL)){
+        } else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_KUBECTL)){
             pipelineKubectl()
         } else {
             throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: helm, kubectl")
@@ -34,9 +34,9 @@ class ExecutePipeline implements Serializable {
 
     def build(Map config = [:]){
 
-        if(config.pipelineTool.equals((Constants.PIPELINE_TOOL_DOCKER)){
+        if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
             pipelineBuildDocker(config)
-        }  else if (config.pipelineTool.equals((Constants.PIPELINE_TOOL_JAVA)){
+        }  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
             pipelineBuildJava()
         } else {
             throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: docker, java")
