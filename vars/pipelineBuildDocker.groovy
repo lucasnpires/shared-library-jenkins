@@ -20,7 +20,7 @@ def call(){
             stage('Run Docker') {
                 steps {
                    container('docker') {
-                        sh 'docker version'
+                        sh "cd $parametersDocker.projectName && ls -lha && docker version"
                     }
                 }
             }
