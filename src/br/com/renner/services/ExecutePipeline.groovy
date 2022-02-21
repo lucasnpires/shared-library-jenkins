@@ -32,19 +32,14 @@ class ExecutePipeline implements Serializable {
         }
     }
 
-    def build(Map config = [:]){
-
-        def configExecuteInputDocker = config.executeInputDocker
-
-        println(configExecuteInputDocker)
-
-        //if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
-        //    pipelineBuildDocker(configExecuteInputDocker)
-        //}  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
-        //    pipelineBuildJava()
-        //} else {
-        //    throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: docker, java")
-        //}
+    def build(Map config){        
+        if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
+            pipelineBuildDocker("${config.executeInputDocker}")
+        }  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
+            pipelineBuildJava()
+        } else {
+            throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: docker, java")
+        }
     }
 
 }

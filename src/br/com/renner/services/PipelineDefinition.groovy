@@ -22,11 +22,8 @@ class PipelineDefinition implements Serializable {
             executePipeline.iac(config)
         } else if(config.pipelineType.equals(Constants.PIPELINE_TYPE_DEPLOY)){
             executePipeline.deploy(config)
-        }  else if(config.pipelineType.equals(Constants.PIPELINE_TYPE_BUILD)){
-            node {
-                this.script.sh("$config")
-            }
-            //executePipeline.build(config.)
+        }  else if(config.pipelineType.equals(Constants.PIPELINE_TYPE_BUILD)){                    
+            executePipeline.build(config)
         } else {
             throw new RuntimeException("Config PipelineType not exists. Please choose from the options: iac, deploy")
         }
