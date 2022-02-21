@@ -1,10 +1,12 @@
+import br.com.renner.utils.ChoicesInputs
+
 def call(){
     def parametersDocker = [
         projectName: '',
         version: ''
     ]
 
-    inputs = new getInputsDocker()
+    def inputs = new ChoicesInputs()
 
     script {
 
