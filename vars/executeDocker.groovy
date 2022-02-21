@@ -12,7 +12,7 @@ def call(Map parametersDocker = [:], String commandDocker) {
                 string(credentialsId: 'oci-registry-user', variable: 'userRegistryOCI'),
                 string(credentialsId: 'oci-registry-pwd', variable: 'passRegistryOCI')
             ]) {
-                sh "docker login -u $userRegistryOCI -p $passRegistryOCI"
+                sh "docker login us-phoenix-1.ocir.io -u '$userRegistryOCI' -p '$passRegistryOCI'"
                 sh "docker push $image"
         } 
     }
