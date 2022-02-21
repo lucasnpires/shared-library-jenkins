@@ -5,7 +5,7 @@ def call(Map parametersDocker = [:], String commandDocker) {
     if(commandDocker.equals('build')){
         sh """
             cd $parametersDocker.projectName         
-            docker build -t $image --no-cache -f Dockerfile-$parametersDocker.version .
+            docker build -t $image --no-cache .
         """
     } else if(commandDocker.equals('push')){        
         withCredentials([
