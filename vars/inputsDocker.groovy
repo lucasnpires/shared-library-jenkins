@@ -13,7 +13,11 @@ def call(){
         parametersDocker.projectName = userInput
 
         userInput = getInputString("Version", "Qual é a versão da imagem? Ex.: 1.0.0", "Docker Project Name")               
-        parametersDocker.version = userInput              
+        parametersDocker.version = userInput   
+
+         // Select Registry Repo
+        userInput = getInput("RegistryRepo", "Qual é Registry Repo que deseja fazer o push?", "Docker Registry Repo", inputs.getReposRegistrys())               
+        parametersDocker.registry = userInput           
 
         return parametersDocker
     }

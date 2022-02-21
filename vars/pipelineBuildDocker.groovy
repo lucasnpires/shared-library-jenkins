@@ -1,4 +1,4 @@
-def call(){
+def call(Map config = [:]){
     def parametersDocker
 
     pipeline {       
@@ -8,8 +8,13 @@ def call(){
             }
         }
 
-        stages {
+        stages {            
             stage('Input Values') {
+                when { 
+                    expression {
+                        config.executeInputDocker == true
+                    }                
+                }  
                 steps {
                     script{
                         parametersDocker = inputsDocker()
@@ -17,10 +22,18 @@ def call(){
                 }
             }
 
-            stage('Build Image Docker') {
+            stage('Build Docker') {
                 steps {
                    container('docker') {
-                       executeDocker(parametersDocker)                        
+                       executeDocker(parametersDocker, 'build')                        
+                    }
+                }
+            }
+
+            stage('Push Docker') {
+                steps {
+                   container('docker') {
+                       executeDocker(parametersDocker, 'push')                        
                     }
                 }
             }

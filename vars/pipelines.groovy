@@ -48,7 +48,7 @@ def executePipelineDeploy(Map config = [:]){
 def executePipelineBuild(Map config = [:]){
 
     if(config.pipelineTool.equals('docker')){
-        pipelineBuildDocker()
+        pipelineBuildDocker(config)
     }  else if (config.pipelineTool.equals('java')){
         pipelineBuildJava()
     } else {
