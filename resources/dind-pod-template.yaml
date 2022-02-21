@@ -2,12 +2,24 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
+  - name: docker-cmds 
+    image: docker:1.12.6 
+    command: ['docker', 'run', '-p', '80:80', 'httpd:latest'] 
+    env: 
+    - name: DOCKER_HOST 
+      value: tcp://localhost:2375 
   - name: dind
     image: docker:19.03.12-dind
     command:
     - cat
     securityContext: 
       privileged: true 
+    volumeMounts: 
+    - name: docker-graph-storage 
+      mountPath: /var/lib/docker
     tty: true
   imagePullSecrets:
   - name: ociregistry
+  volumes: 
+  - name: docker-graph-storage 
+    emptyDir: {}
