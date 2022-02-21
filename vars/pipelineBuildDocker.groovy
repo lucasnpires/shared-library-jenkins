@@ -10,7 +10,7 @@ def call(){
             stage('Run Docker') {
                 steps {
                     container('dind') {                         
-                        sh "docker ps -a"
+                        sh "sudo docker ps -a"
                     }
                 }
             }
