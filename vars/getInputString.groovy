@@ -1,8 +1,9 @@
-def call (String inputName, String inputDescription){
+def call (String inputName, String inputDescription,  String inputMessage){
     
     def choiceObject = [
         name: inputName,
-        description: inputDescription
+        description: inputDescription,
+        message: inputMessage
     ]    
 
     executeInput(choiceObject)
