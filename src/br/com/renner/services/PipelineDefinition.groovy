@@ -5,12 +5,6 @@ import br.com.renner.utils.Constants
 
 class PipelineDefinition implements Serializable {
 
-    private final def script
-
-    PipelineDefinition(def script) {
-        this.script = script
-    }
-
     def executePipeline = new ExecutePipeline()
     
     /*  Método responsável por avaliar qual o PipelineType
