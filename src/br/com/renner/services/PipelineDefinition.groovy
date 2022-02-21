@@ -16,7 +16,7 @@ class PipelineDefinition implements Serializable {
     /*  Método responsável por avaliar qual o PipelineType
         Exemplo: iac, deploy, etc...
     **/
-    def defineExecution(Map config = [:]){        
+    def defineExecution(Map config){        
         
         if(config.pipelineType.equals(Constants.PIPELINE_TYPE_IAC)){
             executePipeline.iac(config)
