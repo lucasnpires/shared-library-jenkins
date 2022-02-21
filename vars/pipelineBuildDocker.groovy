@@ -1,4 +1,4 @@
-def call(String executeInputDocker){
+def call(org.codehaus.groovy.runtime.GStringImpl executeInputDocker){
     def parametersDocker
 
     pipeline {       
