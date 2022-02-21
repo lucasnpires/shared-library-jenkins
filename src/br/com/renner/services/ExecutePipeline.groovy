@@ -38,13 +38,13 @@ class ExecutePipeline implements Serializable {
 
         println(configExecuteInputDocker)
 
-        if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
-            pipelineBuildDocker(configExecuteInputDocker)
-        }  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
-            pipelineBuildJava()
-        } else {
-            throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: docker, java")
-        }
+        //if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
+        //    pipelineBuildDocker(configExecuteInputDocker)
+        //}  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
+        //    pipelineBuildJava()
+        //} else {
+        //    throw new RuntimeException("Config PipelineTool not exists. Please choose from the options: docker, java")
+        //}
     }
 
 }
