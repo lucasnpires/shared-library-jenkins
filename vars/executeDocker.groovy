@@ -9,11 +9,11 @@ def call(Map parametersDocker = [:], String commandDocker) {
         """
     } else if(commandDocker.equals('push')){        
         withCredentials([
-                string(credentialsId: 'oci-registry-user', variable: 'userRegistryOCI')
+                string(credentialsId: 'oci-registry-user', variable: 'userRegistryOCI'),
                 string(credentialsId: 'oci-registry-pwd', variable: 'passRegistryOCI')
             ]) {
-            sh "docker login -u $userRegistryOCI -p $passRegistryOCI"
-            sh "docker push $image"
+                sh "docker login -u $userRegistryOCI -p $passRegistryOCI"
+                sh "docker push $image"
         } 
     }
 }
