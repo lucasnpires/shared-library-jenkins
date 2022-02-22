@@ -1,4 +1,4 @@
-def call(Map config){
+def call(Boolean executeInputDocker){
     def parametersDocker
 
     pipeline {  
@@ -12,7 +12,7 @@ def call(Map config){
             stage('Input Values') {
                 when { 
                     expression {
-                        config.executeInputDocker == true
+                        executeInputDocker == true
                     }                
                 }  
                 steps {
