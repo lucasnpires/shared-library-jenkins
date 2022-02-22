@@ -12,7 +12,7 @@ def call(String executeInputDocker){
             stage('Input Values') {
                 when { 
                     expression {
-                        executeInputDocker.equals("true")
+                        executeInputDocker == true
                     }                
                 }  
                 steps {
