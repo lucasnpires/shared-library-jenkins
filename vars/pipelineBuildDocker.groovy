@@ -1,4 +1,4 @@
-def call(String executeInputDocker){
+def call(Boolean executeInputDocker){
     def parametersDocker
 
     pipeline {  
