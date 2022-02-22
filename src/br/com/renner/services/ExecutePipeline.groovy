@@ -34,7 +34,7 @@ class ExecutePipeline implements Serializable {
 
     def build(Map config){        
         if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
-            pipelineBuildDocker(config.executeInputDocker)
+            pipelineBuildDocker(config.executeInputDocker[0])
         }  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
             pipelineBuildJava()
         } else {

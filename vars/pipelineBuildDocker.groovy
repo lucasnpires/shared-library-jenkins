@@ -1,4 +1,4 @@
-def call(java.lang.Boolean executeInputDocker){
+def call(Boolean executeInputDocker){
     def parametersDocker
 
     pipeline {  
