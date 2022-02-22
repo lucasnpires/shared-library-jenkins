@@ -3,6 +3,8 @@ package br.com.renner.services
 import br.com.renner.utils.Constants
 
 class ExecutePipeline implements Serializable {
+
+    def pipelineBuild = new PipelineBuild()
     
     /*  Método responsável por executar a pipeline de IaC, baseado no paramâmetro pipelineTool
         Exemplo: terraform, ansible, etc...
@@ -34,7 +36,7 @@ class ExecutePipeline implements Serializable {
 
     def build(Map config){        
         if(config.pipelineTool.equals(Constants.PIPELINE_TOOL_DOCKER)){
-            pipelineBuildDocker("${config.executeInputDocker}")
+            pipelineBuild.docker(config.executeInputDocker)
         }  else if (config.pipelineTool.equals(Constants.PIPELINE_TOOL_JAVA)){
             pipelineBuildJava()
         } else {

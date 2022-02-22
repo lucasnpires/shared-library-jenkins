@@ -1,7 +1,7 @@
-def call(org.codehaus.groovy.runtime.GStringImpl executeInputDocker){
+def call(String executeInputDocker){
     def parametersDocker
 
-    pipeline {       
+    pipeline {  
         agent {
             kubernetes {
                 yaml libraryResource('dind-pod-template.yaml')
