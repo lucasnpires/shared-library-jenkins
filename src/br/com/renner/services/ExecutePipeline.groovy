@@ -2,9 +2,7 @@ package br.com.renner.services
 
 import br.com.renner.utils.Constants
 
-class ExecutePipeline implements Serializable {
-
-    def pipelineBuild = new PipelineBuild()
+class ExecutePipeline implements Serializable {    
     
     /*  Método responsável por executar a pipeline de IaC, baseado no paramâmetro pipelineTool
         Exemplo: terraform, ansible, etc...
