@@ -3,6 +3,8 @@ package br.com.renner.services
 class PipelineBuild implements Serializable {
 
     def docker(Boolean executeInputDocker){
+        def parametersDocker
+        
         pipeline {  
             agent {
                 kubernetes {
